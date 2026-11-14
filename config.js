@@ -15,7 +15,7 @@ window.JACKPOT_CONFIG = {
   },
 
   // From Amplitude > Settings > Projects > your project > API Key. Leave empty to turn Amplitude off.
-  amplitudeApiKey: "",
+  amplitudeApiKey: "a0f1f1696258a2f43de1ac9e39176571",
   // "us" or "eu" (use "eu" only if your Amplitude project is in the EU data center).
   amplitudeRegion: "us"
 };
