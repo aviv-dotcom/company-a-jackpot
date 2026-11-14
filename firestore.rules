@@ -1,0 +1,41 @@
+rules_version = '2';
+// Company A Jackpot — Firestore security rules.
+// Paste this into Firebase console > Firestore Database > Rules, then click Publish.
+// Every player gets an anonymous id on their device; each player can only change their own documents.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isMe(uid) { return signedIn() && request.auth.uid == uid; }
+
+    // Leaderboard: anyone can read (it's shown on the password screen); each player writes only their own row,
+    // and only these public fields.
+    match /scores/{uid} {
+      allow read: if true;
+      allow write: if isMe(uid)
+        && request.resource.data.keys().hasOnly(['xp', 'correct', 'best', 'name', 'at'])
+        && request.resource.data.xp is number;
+    }
+
+    // Player cards: stored encrypted with the game password ({enc, at}). Signed-in players read them;
+    // each player writes only their own.
+    match /profiles/{uid} {
+      allow read: if signedIn();
+      allow write: if isMe(uid)
+        && request.resource.data.keys().hasOnly(['enc', 'at'])
+        && request.resource.data.enc is string
+        && request.resource.data.enc.size() < 400000;
+    }
+
+    // Usage log: each player writes their own sessions; nobody can read them from the page
+    // (you can still see them in the Firebase console).
+    match /events/{uid}/sessions/{sid} {
+      allow create, update: if isMe(uid);
+      allow read, delete: if false;
+    }
+
+    // Private per-player data: progress and saved cards.
+    match /data/users/{uid}/{rest=**} {
+      allow read, write: if isMe(uid);
+    }
+  }
+}
