@@ -1,3 +1,3 @@
-// Company A Jackpot password lock. It holds no password, only the game's data key locked with it.
-// To change the password, open change-password.html on the game site and replace this whole file with its result.
-window.JACKPOT_LOCK = {"v":1,"iter":600000,"salt":"iXZ5R5CvIBoMyNUrnE3K8A==","iv":"RVBXksyUVjM8Vyip","ct":"+iaE776ub9leHPsaNUJbGRae+jRoSUrdYxP37n21RD0qW6iHnIfU0tdfHwPrO7PN"};
+// Company A Jackpot password lock. Created 2026-11-14 with change-password.html.
+// It holds no password, only the game's data key locked with it. Replace this whole file to change the password.
+window.JACKPOT_LOCK = {"v":1,"iter":600000,"salt":"vKK6bgmrBIRlaRldcldX1g==","iv":"uxGvhv0iuWLVhgUO","ct":"7fYD3gTgZ1Mp438zJv7jBF+E8sjmMiZVWKaZ6MuCnBZ3s+29Rp2vd4hMt5ZoCw7V"};
