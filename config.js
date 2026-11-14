@@ -6,12 +6,12 @@ window.JACKPOT_CONFIG = {
   // From Firebase console > Project settings > Your apps > Web app > "SDK setup and configuration" > Config.
   // Copy the values from the firebaseConfig object shown there.
   firebase: {
-    apiKey: "AIzaSyBstjlhXMuUvf7KqEX42hlXtkVV4Xi8JW0",
-    authDomain: "companya-jackpot.firebaseapp.com",
-    projectId: "companya-jackpot",
-    storageBucket: "companya-jackpot.firebasestorage.app",
-    messagingSenderId: "807236156853",
-    appId: "1:807236156853:web:aa8acfee845839ab98edfc"
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
   },
 
   // From Amplitude > Settings > Projects > your project > API Key. Leave empty to turn Amplitude off.

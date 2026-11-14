@@ -13,6 +13,8 @@ game password. Shared data (leaderboard, player cards, new members) lives in Fir
 | `index.html` | The game. Don't edit by hand. |
 | `config.js` | Your Firebase and Amplitude settings. Fill this in (step 3). |
 | `firestore.rules` | Security rules for the database. Paste into Firebase (step 2). |
+| `password.js` | The password lock. Holds no readable password. Replace it to change the password. |
+| `change-password.html` | Page for changing the game password yourself (see below). |
 
 ## Setup
 
@@ -48,9 +50,19 @@ These values are designed to be public in a web page. The security rules and the
 2. Repository **Settings > Pages**: Source **Deploy from a branch**, Branch **main**, folder **/ (root)**, Save.
 3. After a minute the game is live at `https://<your-username>.github.io/company-a-jackpot/`.
 
+## Changing the password
+
+1. Open `https://<your-username>.github.io/company-a-jackpot/change-password.html`.
+2. Enter the current password and the new one (at least 12 characters), click **Create new password file**, then **Copy**.
+3. On GitHub, open `password.js`, click the pencil, select everything (Ctrl+A), paste, and **Commit changes**.
+
+Players keep their cards, scores and saved lists. Everyone, including remembered devices, is asked for the new
+password the next time they open the game.
+
 ## Managing the game
 
 - **Remove a player or card:** Firebase console > Firestore Database > `profiles` (cards) or `scores` (leaderboard),
   open the document and delete it.
 - **See usage:** in Amplitude (events start with `jackpot_`), or Firestore > `events`.
-- **Change the password or add newsletter stories:** ask Claude to rebuild `index.html`, then upload the new file.
+- **Add newsletter stories or members:** ask Claude to rebuild `index.html`, then upload the new file. The password
+  and everything players saved stay as they are.
